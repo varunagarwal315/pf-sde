@@ -1,27 +1,33 @@
 # Technical Assignment
-Assignment to test json manipulation skills for Prism Force.
+Assignment to test fundamental javascript knowledge for Prism Force. This can be written as a `nodejs` executable or a js file invoked through a browser.
 
-### Explanation
-Write a `.js` file which will take a json object containing the revenue and expense data of a company, and output its balance sheet month wise. 
 
-Write a javascript program which will calculate the balance sheet for an organization and output the answer to the console. The balance for any month is the sum of all revenue for the month - sum of all expense for the month (`revenue.amount - expense.amount`)
+### Problem statement
+Write a `.js` file which will take a json object containing the revenue and expense data of a company, and output its balance sheet month wise. The revenue and expense may be fixed or variable amounts payable in installments.
 
+The program should output the answer/ balance sheet to the console. The balance for any month is the sum of all revenue for the month - sum of all expense for the month (`revenue.amount - expense.amount`). Sort the balancesheet in ascending order by timestamp.
+
+
+#### Assumptions
+- Amount will always be a valid positive number
+- `startDate` will always be a valid ISO timestamp where the year and month may change. The day and time will remain constant
+
+
+#### Scenarios
+- Date entries may be missing for revenue or expense, assume the amount is 0
+- Think of additional cases, if any not covered here. Mention and solve for them
+
+
+### Example
 Two sample input files with their corresponding expected outputs have been provided for testing.
 
 Look at `1-input.json` for the month of March. The `expense` is 30 while the revenue has 2 entries - amount of 60 and 10. The total balance for March is `60 + 10 - 30` which is `40` - visible in `1-output.json`.
 Revenue and expenses may have multiple entries per month, may have missing data for which you can assume the `amount` is `0`. Their timestamps may not overlap. Eg. Revenue may be for Feb and March, while expenses has data for Jan, March and April - refer to `2-input.json` for further examples
 
 
-You may assume
-- Amount will always be a valid positive number
-- startDate will always be a valid ISO timestamp where the year and month may change. The day and time will remain constant
-
-
 ### Bonus points
 - Follow `es6` syntax strictly
 - Read the json object from a file
-- Sort the balancesheet in ascending order by timestamp
-- Think of any fringe cases and solve for them - think from a product perspective as well
 - Optimize the solution for lowest time complexity
 - Focus on writing modular reusable functions
 
