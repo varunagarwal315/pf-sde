@@ -5,12 +5,18 @@ Assignment to test fundamental javascript knowledge for Prism Force. This can be
 ### Problem statement
 Write a `.js` file which will take a json object containing the revenue and expense data of a company, and output its balance sheet month wise. The revenue and expense may be fixed or variable amounts payable in installments.
 
-The program should output the answer/ balance sheet to the console. The balance for any month is the sum of all revenue for the month - sum of all expense for the month (`revenue.amount - expense.amount`). Sort the balancesheet in ascending order by timestamp.
+The program should output the answer/ balance sheet to the console. The balance for any month is the sum of all revenue for the month - sum of all expense for the month (`revenue.amount - expense.amount`). Each entry has amount, timestamp and period. `period` represents recurring revenue in months including the entry date. If an entry in March has a period of 2, it means that amount will be for March and April. In some cases, the amount will increase month on month based on an `rate`. Assume the increments are compounded rates.
+
+Sort the balancesheet in ascending order by timestamp.
+Generate input JSON(s) of your own, attach them with the solution and verify the output.
 
 
 #### Assumptions
 - Amount will always be a valid positive number
 - `startDate` will always be a valid ISO timestamp where the year and month may change. The day and time will remain constant
+- Revenue and expense can be of different length. No guarentee which is longer
+- Take `rate` as a decimal
+- Variable `period` will always be a valid integer
 
 
 #### Scenarios
@@ -21,8 +27,10 @@ The program should output the answer/ balance sheet to the console. The balance 
 ### Example
 Two sample input files with their corresponding expected outputs have been provided for testing.
 
-Look at `1-input.json` for the month of March. The `expense` is 30 while the revenue has 2 entries - amount of 60 and 10. The total balance for March is `60 + 10 - 30` which is `40` - visible in `1-output.json`.
-Revenue and expenses may have multiple entries per month, may have missing data for which you can assume the `amount` is `0`. Their timestamps may not overlap. Eg. Revenue may be for Feb and March, while expenses has data for Jan, March and April - refer to `2-input.json` for further examples
+
+For `1-input.json`.
+
+Expense for May is 20 with a period of 2 so it logs in expense of 20 for May and June. Similarly the entry for Jan results in revene for 3 periods - Jan, Feb and March. Jan, Feb and March are missing in expense so their amount is taken as 0.
 
 
 ### Bonus points
